@@ -1,0 +1,62 @@
+version: '3'
+services:
+  # web:
+  #   build:
+  #     context: .
+  #     args:
+  #       RUBY_VERSION: '3.2.2'
+  #       PG_MAJOR: '16'
+  #   volumes:
+  #     - .:/app
+  #     - rails_cache:/app/tmp/cache
+  #     - history:/usr/local/hist
+  #     # - ./.psqlrc:/root/.psqlrc:ro
+  #     # - ./.bashrc:/root/.bashrc:ro
+  #   stdin_open: true
+  #   tty: true
+  #   command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+  #   environment:
+  #     MALLOC_ARENA_MAX: 2
+  #     WEB_CONCURRENCY: ${WEB_CONCURRENCY:-1}
+  #     BOOTSNAP_CACHE_DIR: /usr/local/bundle/_bootsnap
+  #     HISTFILE: /usr/local/hist/.bash_history
+  #     EDITOR: vi
+  #     DATABASE_URL: postgresql://postgres:password@db/prompt_search_development
+  #     ELASTICSEARCH_URL: http://elasticsearch:9200
+  #     RAILS_ENV: development
+
+  #   depends_on:
+  #     - db
+  #     - elasticsearch
+  #   ports:
+  #     - "3000:3000"
+
+  db:
+    image: postgres:16
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=prompt_search_development
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.9.2
+    environment:
+      xpack.security.enabled: false
+      discovery.type: single-node
+
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+volumes:
+  bundle:
+  rails_cache:
+  history:
+  postgres_data:
+    driver: local
+  elasticsearch_data:
+    driver: local
