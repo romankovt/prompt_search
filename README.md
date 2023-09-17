@@ -1,24 +1,16 @@
-# README
+# Fast track installation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+1. Run app via docker compose
+```bash
+$ docker compose build
+$ docker compose up
+```
 
-* Ruby version
+2. Migrate and import data
+```bash
+$ make migrate
+$ make import_prompts
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3. Open http://localhost:3000 in browser

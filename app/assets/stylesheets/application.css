@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+.wrapper {
+    margin: 20px 60px 60px 60px;
+}
+
+.pagination {
+    display: flex;
+    gap: 10px;
+}
