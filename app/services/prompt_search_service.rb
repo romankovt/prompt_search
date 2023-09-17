@@ -8,7 +8,6 @@ class PromptSearchService < BaseService
   def call(params)
     q = params[:query]&.downcase
     @page = params[:page] || 1
-    @per_page = params[:per_page] || 10
 
     definition = search do
       query do
