@@ -13,18 +13,19 @@ class PromptSearchService < BaseService
       query do
         bool do
           if q.present?
-            # fuzzy search
-            should do
-              multi_match do
-                query q
-                fields(['text'])
-                fuzziness 'auto'
-              end
-            end
-
-            # boosting exact matches
+            # boosting exact matches prefixes
             should do
               match_phrase_prefix text: { query: q, boost: 3 }
+            end
+
+            # boosting exact matches but anywhere in the text
+            should do
+              match_phrase text: { query: q, boost: 2 }
+            end
+
+            # fuzzy searching with least priority
+            should do
+              match text: { query: q, fuzziness: 'AUTO' }
             end
 
             # at least 1 should clause should match

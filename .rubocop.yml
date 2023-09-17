@@ -41,6 +41,9 @@ Metrics/MethodLength:
     - db/migrate/**/*
     - db/seeds.rb
 
+Metrics/BlockLength:
+  Max: 90
+
 # BUNDLER RULES
 Bundler/OrderedGems:
   Enabled: false
