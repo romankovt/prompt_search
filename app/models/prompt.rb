@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 class Prompt < ApplicationRecord
+  include SearchablePrompt
+
   validates :text, presence: true
-
-  searchkick
-
-  def search_data
-    { text: }
-  end
 end

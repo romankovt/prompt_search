@@ -1,4 +1,4 @@
-<% if @prompts.any? %>
+<% if @prompts.present? %>
     <h2>Search results for: <%= params[:query] %></h2>
     <ul class="list-group">
         <% @prompts.each do |prompt| %>

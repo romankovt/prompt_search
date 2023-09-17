@@ -2,6 +2,7 @@
 
 class PromptSearchesController < ApplicationController
   def index
-    @prompts = Prompt.search(params[:query], page: params[:page], per_page: 20)
+    service = PromptSearchService.new
+    @prompts = service.call(params)
   end
 end

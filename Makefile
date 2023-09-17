@@ -17,4 +17,4 @@ console:
 	docker exec -it cgtrader-search bash -c "rails console"
 
 import_prompts:
-	docker exec -it cgtrader-search bash -c "rake db:import_prompts"
+	docker exec -it cgtrader-search bash -c "LOG_ELASTICSEARCH=false rake db:import_prompts"

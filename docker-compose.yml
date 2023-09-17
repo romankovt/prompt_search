@@ -21,6 +21,7 @@ services:
       EDITOR: vi
       DATABASE_URL: postgresql://postgres:password@db/prompt_search_development
       ELASTICSEARCH_URL: http://elasticsearch:9200
+      LOG_ELASTICSEARCH: true
       RAILS_ENV: development
 
     depends_on:

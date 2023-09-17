@@ -6,19 +6,26 @@ namespace :db do
     require 'csv'
 
     file_path = Rails.root.join('db', 'seed_data', 'prompts.csv')
-    prompts = []
+
+    Prompt.__elasticsearch__.create_index!(force: true)
+    prompts_before_count = Prompt.count
+    new_prompts = []
+
+    puts 'Importing prompts to the database...'
 
     CSV.foreach(file_path, headers: true).with_index do |row, index|
       if (index % 500).zero?
         print '.'
-        Prompt.insert_all(prompts) if prompts.any?
-        prompts = []
+        Prompt.insert_all(new_prompts) if new_prompts.any?
+        new_prompts = []
       end
 
-      prompts << { text: row['prompt'] }
+      new_prompts << { text: row['prompt'] }
     end
 
+    puts
+    puts "#{Prompt.count - prompts_before_count} imported."
     puts 'Indexing prompts to elasticsearch...'
-    Prompt.reindex
+    Prompt.import
   end
 end

@@ -36,7 +36,7 @@ Metrics/ParameterLists:
 
 Metrics/MethodLength:
   CountAsOne: ['array', 'hash', 'heredoc']
-  Max: 20
+  Max: 60
   Exclude:
     - db/migrate/**/*
     - db/seeds.rb
@@ -116,6 +116,9 @@ Layout/MultilineAssignmentLayout:
 
 Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
+
+Lint/EmptyClass:
+  Enabled: false
 
 # RAILS RULES
 Rails:

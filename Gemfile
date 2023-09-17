@@ -47,12 +47,14 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# searching
-gem 'elasticsearch', '~> 8.10.0'
-gem 'searchkick', '~> 5.3.0'
-
 # pagination
 gem 'kaminari', '~> 1.2.2'
+
+# searching
+# gem 'elasticsearch', '~> 8.10.0'
+gem 'elasticsearch-rails', '~> 7.2.1'
+gem 'elasticsearch-model', '~> 7.2.1'
+gem 'elasticsearch-dsl', '~> 0.1.10'
 
 # check code style
 gem 'rubocop', '1.56.3', require: false
