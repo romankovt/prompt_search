@@ -1,15 +1,18 @@
 # Fast track installation
 
-1. Run app via docker compose, wait all health checks till puma starts
+## Requirements:
+* Compatible with macOS or Unix-based systems
+* Docker must be installed on your machine
+
+## Installation steps
+1. Wait for all health checks to complete and for the Puma server to start running.
 ```bash
 $ docker compose build
 $ docker compose up
 ```
-
-2. Migrate and import data
+2. Run the following commands to migrate the database and import necessary data.
 ```bash
 $ make migrate
 $ make import_prompts
 ```
-
-3. Open http://localhost:3000 in browser
+3. Open your web browser and navigate to `http://localhost:3000`
